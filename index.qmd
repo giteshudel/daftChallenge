@@ -115,14 +115,14 @@ import matplotlib.pyplot as plt
 pgm = daft.PGM(dpi=150, alternate_style="outer")
 
 # Example of a professionally styled node
-pgm.add_node("Lemons", "Lemons\nIntake" + r" $(X)$", 1, 1, aspect = 3, scale = 1.1,
+pgm.add_node("Lemons", "Lemons", 1, 1, aspect = 3, scale = 1.1,
              plot_params={
                  'facecolor': 'lightgreen', 
                  'edgecolor': 'darkgreen', 
                  'linewidth': 2,
                  'alpha': 0.8,
              })
-pgm.add_node("Scurvy", "Scurvy\n"+r" $(Y)$", 3.25, 1, aspect = 3, scale = 1.1,
+pgm.add_node("Scurvy", "Scurvy", 3.25, 1, aspect = 3, scale = 1.1,
              plot_params={
                  'facecolor': 'thistle', 
                  'edgecolor': 'purple', 
@@ -132,6 +132,7 @@ pgm.add_node("Scurvy", "Scurvy\n"+r" $(Y)$", 3.25, 1, aspect = 3, scale = 1.1,
 pgm.add_edge("Lemons", "Scurvy")
 
 pgm.render()
+plt.title("The 1747 Understanding (Correct but Incomplete)", fontsize=12, fontweight='bold', pad=15)
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
@@ -213,6 +214,49 @@ plt.title("The Misguided Belief: Why the Cure Was Lost", fontsize=12, fontweight
 # Your code here - recreate the DAG from the reference image
 # This should be the most complete and accurate representation
 # Use professional styling that would be suitable for a scientific publication
+
+
+import daft
+import matplotlib.pyplot as plt
+
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
+
+# Node 1: Acid (what they thought was the active ingredient)
+pgm.add_node("vitamin_c", "Vitamin C", 1, 1, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'lightgreen',  
+                 'edgecolor': 'darkgreen',  # Crimson
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Node 2: Bacteria Death (the incorrect mechanism)
+pgm.add_node("collagen", "Collagen\nSynthesis", 2.50, -0.5, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'yellow',  
+                 'edgecolor': 'red',  # Dim gray
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Node 3: No Scurvy (the outcome)
+pgm.add_node("scurvy", "Scurvy\nPrevention", 4.00, -2, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'thistle', 
+                 'edgecolor': 'purple',  
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Add edges showing the INCORRECT causal chain
+# Customize arrow size and appearance
+pgm.add_edge("vitamin_c", "collagen")
+pgm.add_edge("collagen", "scurvy")
+
+# Render the DAG
+pgm.render()
+plt.title("Simplified Modern Understanding (1930 Onwards)", fontsize=12, fontweight='bold', pad=15)
 ```
 
 ## Student Requirements Section: Mastering DAFT Visualization {#student-analysis-section}
