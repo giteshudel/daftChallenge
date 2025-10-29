@@ -106,6 +106,32 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 # Your code here - recreate the DAG from the reference image
 # Use DAFT to create nodes and edges that match the visual structure
 # Customize colors and styling to make it professional
+
+
+import daft
+import matplotlib.pyplot as plt
+
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
+
+# Example of a professionally styled node
+pgm.add_node("Lemons", "Lemons\nIntake" + r" $(X)$", 1, 1, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'lightgreen', 
+                 'edgecolor': 'darkgreen', 
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+pgm.add_node("Scurvy", "Scurvy\n"+r" $(Y)$", 3.25, 1, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': 'thistle', 
+                 'edgecolor': 'purple', 
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+pgm.add_edge("Lemons", "Scurvy")
+
+pgm.render()
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
@@ -120,13 +146,52 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ```{python}
 #| label: dag-2-misguided
 #| echo: true
+#| fig-cap: "DAG 2: The Misguided Belief - Acid kills bacteria (INCORRECT understanding that led to scurvy's return)"
 
-# TODO: Replace this placeholder with your DAFT code
 # Create a DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention
+# This represents the WRONG understanding that led to scurvy's return
 
-# Your code here - recreate the DAG from the reference image
-# This DAG should show the incorrect causal chain
-# Use different colors or styling to indicate this is the wrong understanding
+import daft
+import matplotlib.pyplot as plt
+
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
+
+# Node 1: Acid (what they thought was the active ingredient)
+pgm.add_node("acid", "Acid", 1, 1, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': '#FFB6C6',  # Light pink
+                 'edgecolor': '#DC143C',  # Crimson
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Node 2: Bacteria Death (the incorrect mechanism)
+pgm.add_node("bacteria", "Bacteria\nDeath", 2.50, -0.5, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': '#D3D3D3',  # Gray to indicate wrong belief
+                 'edgecolor': '#696969',  # Dim gray
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Node 3: No Scurvy (the outcome)
+pgm.add_node("scurvy", "Scurvy\nPrevention", 4.00, -2, aspect = 3, scale = 1.1,
+             plot_params={
+                 'facecolor': '#98FB98',  # Pale green
+                 'edgecolor': '#228B22',  # Forest green
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Add edges showing the INCORRECT causal chain
+# Customize arrow size and appearance
+pgm.add_edge("acid", "bacteria")
+pgm.add_edge("bacteria", "scurvy")
+
+# Render the DAG
+pgm.render()
+plt.title("The Misguided Belief: Why the Cure Was Lost", fontsize=12, fontweight='bold', pad=15)
 ```
 
 ### DAG 3: The 1928 Understanding (Complete and Correct)
