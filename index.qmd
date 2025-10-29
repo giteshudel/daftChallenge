@@ -133,6 +133,7 @@ pgm.add_edge("Lemons", "Scurvy")
 
 pgm.render()
 plt.title("The 1747 Understanding (Correct but Incomplete)", fontsize=12, fontweight='bold', pad=15)
+
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
