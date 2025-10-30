@@ -91,11 +91,6 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 
 **Historical Context:** In 1747, James Lind discovered that lemons prevent scurvy through a controlled experiment. However, the understanding was incomplete - they knew lemons worked but not why.
 
-**Your Task:** Recreate this DAG showing the relationship between lemons and scurvy prevention.
-
-**Reference Image:**
-![](https://raw.githubusercontent.com/flyaflya/persuasive/642288ea5f79050c05801c3d127084ac0f361a01/images/scurvy2.png)
-
 ```{python}
 #| label: dag-1-1747
 #| echo: true
@@ -132,18 +127,13 @@ pgm.add_node("Scurvy", "Scurvy", 3.25, 1, aspect = 3, scale = 1.1,
 pgm.add_edge("Lemons", "Scurvy")
 
 pgm.render()
-plt.title("The 1747 Understanding (Correct but Incomplete)", fontsize=12, fontweight='bold', pad=15)
+plt.title("Simplified Lind's Model (1747)", fontsize=12, fontweight='bold', pad=15)
 
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
 
 **Historical Context:** Over time, people came to believe it was the acid in lemons that killed bacteria which was causing scurvy. This led to lemons being replaced by limes (cheaper but less Vitamin C) or just using acids like vinegar, causing scurvy to return.
-
-**Your Task:** Recreate this DAG showing the incorrect understanding of the data generating process.
-
-**Reference Image:**
-![](https://raw.githubusercontent.com/flyaflya/persuasive/8aaffd0a3c967d0a26f506232f998130847be3e8/images/scurvy.png)
 
 ```{python}
 #| label: dag-2-misguided
@@ -180,8 +170,8 @@ pgm.add_node("bacteria", "Bacteria\nDeath", 2.50, -0.5, aspect = 3, scale = 1.1,
 # Node 3: No Scurvy (the outcome)
 pgm.add_node("scurvy", "Scurvy\nPrevention", 4.00, -2, aspect = 3, scale = 1.1,
              plot_params={
-                 'facecolor': '#98FB98',  # Pale green
-                 'edgecolor': '#228B22',  # Forest green
+                 'facecolor': 'thistle',  
+                 'edgecolor': 'purple', 
                  'linewidth': 2,
                  'alpha': 0.8,
              })
@@ -193,17 +183,12 @@ pgm.add_edge("bacteria", "scurvy")
 
 # Render the DAG
 pgm.render()
-plt.title("The Misguided Belief: Why the Cure Was Lost", fontsize=12, fontweight='bold', pad=15)
+plt.title("Updated Bacterial Theory (Late 19th Century)", fontsize=12, fontweight='bold', pad=15)
 ```
 
 ### DAG 3: The 1928 Understanding (Complete and Correct)
 
 **Historical Context:** In 1928, the true mechanism was discovered - it was Vitamin C (ascorbic acid) that prevented scurvy. This complete understanding finally explained why lemons worked and why the acid theory was wrong.
-
-**Your Task:** Recreate this DAG showing the complete and correct understanding of the scurvy data generating process.
-
-**Reference Image:**
-![](https://raw.githubusercontent.com/flyaflya/persuasive/main/images/scurvy3.png)
 
 ```{python}
 #| label: dag-3-1928
