@@ -40,13 +40,9 @@ Scurvy was a devastating disease that affected sailors on long voyages. The cure
 2. **Misguided Belief:** Acid kills bacteria that causes scurvy (wrong!)
 3. **1928 Understanding:** Vitamin C prevents scurvy (the real mechanism)
 
-## Environment Setup
-
-First, let's install the DAFT package and set up our environment:
-
 ```{python}
 #| label: setup-environment
-#| echo: true
+#| echo: false
 #| message: false
 #| warning: false
 
@@ -65,35 +61,13 @@ print("DAFT package imported successfully!")
 print("Ready to create beautiful DAGs!")
 ```
 
-::: {.callout-note}
-## 💡 Understanding DAFT
-
-**DAFT (Directed Acyclic Factor Graphs Toolkit)** is a Python package for creating probabilistic graphical models. It's particularly useful for:
-
-- Creating Directed Acyclic Graphs (DAGs)
-- Visualizing causal relationships
-- Communicating data generating processes
-- Creating publication-quality figures
-
-**Key DAFT Concepts:**
-
-- **Nodes:** Represent variables or factors
-- **Edges:** Show relationships between variables
-- **Plates:** Indicate repeated structures
-- **Styling:** Customize colors, shapes, and formatting
-:::
-
-## The Three DAGs: Your Mission
-
-Your task is to recreate these three historical DAGs using DAFT, making them visually appealing and professionally formatted.
-
 ### DAG 1: The 1747 Understanding (Correct but Incomplete)
 
 **Historical Context:** In 1747, James Lind discovered that lemons prevent scurvy through a controlled experiment. However, the understanding was incomplete - they knew lemons worked but not why.
 
 ```{python}
 #| label: dag-1-1747
-#| echo: true
+#| echo: false
 
 # TODO: Replace this placeholder with your DAFT code
 # Create a DAG showing the 1747 understanding: Lemons → Scurvy Prevention
@@ -112,8 +86,8 @@ pgm = daft.PGM(dpi=150, alternate_style="outer")
 # Example of a professionally styled node
 pgm.add_node("Lemons", "Lemons", 1, 1, aspect = 3, scale = 1.1,
              plot_params={
-                 'facecolor': 'lightgreen', 
-                 'edgecolor': 'darkgreen', 
+                 'facecolor': 'lemonchiffon', 
+                 'edgecolor': 'yellowgreen', 
                  'linewidth': 2,
                  'alpha': 0.8,
              })
@@ -137,7 +111,7 @@ plt.title("Simplified Lind's Model (1747)", fontsize=12, fontweight='bold', pad=
 
 ```{python}
 #| label: dag-2-misguided
-#| echo: true
+#| echo: false
 #| fig-cap: "DAG 2: The Misguided Belief - Acid kills bacteria (INCORRECT understanding that led to scurvy's return)"
 
 # Create a DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention
@@ -152,8 +126,8 @@ pgm = daft.PGM(dpi=150, alternate_style="outer")
 # Node 1: Acid (what they thought was the active ingredient)
 pgm.add_node("acid", "Acid", 1, 1, aspect = 3, scale = 1.1,
              plot_params={
-                 'facecolor': '#FFB6C6',  # Light pink
-                 'edgecolor': '#DC143C',  # Crimson
+                 'facecolor': 'indianred',  
+                 'edgecolor': 'darkred',  
                  'linewidth': 2,
                  'alpha': 0.8,
              })
@@ -161,8 +135,8 @@ pgm.add_node("acid", "Acid", 1, 1, aspect = 3, scale = 1.1,
 # Node 2: Bacteria Death (the incorrect mechanism)
 pgm.add_node("bacteria", "Bacteria\nDeath", 2.50, -0.5, aspect = 3, scale = 1.1,
              plot_params={
-                 'facecolor': '#D3D3D3',  # Gray to indicate wrong belief
-                 'edgecolor': '#696969',  # Dim gray
+                 'facecolor': 'antiquewhite',  
+                 'edgecolor': 'goldenrod',
                  'linewidth': 2,
                  'alpha': 0.8,
              })
@@ -192,7 +166,7 @@ plt.title("Updated Bacterial Theory (Late 19th Century)", fontsize=12, fontweigh
 
 ```{python}
 #| label: dag-3-1928
-#| echo: true
+#| echo: false
 
 # TODO: Replace this placeholder with your DAFT code
 # Create a DAG showing the 1928 understanding: Vitamin C → Scurvy Prevention
@@ -245,135 +219,7 @@ pgm.render()
 plt.title("Simplified Modern Understanding (1930 Onwards)", fontsize=12, fontweight='bold', pad=15)
 ```
 
-## Student Requirements Section: Mastering DAFT Visualization {#student-analysis-section}
 
-**Your Task:** Demonstrate your mastery of DAFT through comprehensive recreation of the three scurvy DAGs and thoughtful analysis. The bulk of your grade comes from successfully recreating the DAGs and answering the discussion questions.
-
-::: {.callout-important}
-## 📊 Challenge Requirements
-
-**Complete all DAG recreation sections:**
-
-1. **DAG 1 (1747):** Lemons prevent scurvy - correct but incomplete
-2. **DAG 2 (Misguided):** Acid kills bacteria - wrong understanding  
-3. **DAG 3 (1928):** Vitamin C prevents scurvy - complete and correct
-4. **Optional:** Add a little professional styling to the DAGs to make them more visually appealing (example: use nice fill colors and/or enclose the text in the ellipse completely).
-:::
-
-### Professional Quality Standards
-
-**Your DAGs should:**
-
-- (90% grade): Accurately recreate the reference images
-- (100% grade): Add professional colors and possibly play with shapes to make it more visually appealing (example: use nice fill colors and/or enclose the text in the ellipse completely). Erase everything but the story of scurvy and the three DAGs
-- Include clear, readable labels
-- Demonstrate understanding of DAFT customization options
-- Be suitable for a business or academic audience
-
-### Example: Professional DAFT Node Styling
-
-Here's an example (see @fig-example-node) of how to create a professionally styled node in DAFT with nice captions and references to the figure:
-
-```{python}
-#| label: fig-example-node
-#| echo: true
-#| fig-cap: "Example: Professional DAFT Node Styling"
-
-import daft
-import matplotlib.pyplot as plt
-
-# Create a PGM object
-pgm = daft.PGM(dpi=150, alternate_style="outer")
-
-# Example of a professionally styled node
-pgm.add_node("vitamin_c", "Vitamin C\nIntake" + r" $(X)$", 1, 1, aspect = 3, scale = 1.1,
-             plot_params={
-                 'facecolor': 'lightgreen', 
-                 'edgecolor': 'darkgreen', 
-                 'linewidth': 2,
-                 'alpha': 0.8,
-             })
-pgm.add_node("health", "Healthiness\n"+r" $(Y)$", 3.25, 1, aspect = 3, scale = 1.1,
-             plot_params={
-                 'facecolor': 'thistle', 
-                 'edgecolor': 'purple', 
-                 'linewidth': 2,
-                 'alpha': 0.8,
-             })
-pgm.add_edge("vitamin_c", "health")
-
-pgm.render()
-```
-
-**Key Styling Parameters:**
-
-- `facecolor`: Background color of the node
-- `edgecolor`: Border color of the node  
-- `linewidth`: Thickness of the border
-- `alpha`: Transparency (0.0 to 1.0)
-- `fontsize`: Size of text inside the node
-- `aspect`: Width/height aspect ratio of the node (default: 1.0)
-- `scale`: Height of the node (default: 1.0)
-
-## Getting Started: Repository Setup 🚀
-
-::: {.callout-important}
-## 📁 Getting Started
-
-**Step 1:** Create a new repository in your GitHub account named "daftChallenge" (forked from [https://github.com/flyaflya/daftChallenge](https://github.com/flyaflya/daftChallenge))
-
-**Step 2:** Clone your repository locally using Cursor (or VS Code)
-
-**Step 3:** Be sure to install DAFT in your environment: `pip install 'daft-pgm'`.
-
-**Step 4:** Modify your local copy of this `index.qmd` file  to complete the challenge and get it to be a github pages website.
-:::
-
-### Getting Started Tips
-
-## Key DAFT Resources
-
-**Essential DAFT Documentation:**
-
-- [DAFT Documentation](https://docs.daft-pgm.org/en/latest/)
-- [DAFT Examples](https://docs.daft-pgm.org/en/latest/examples/)
-- [Matplotlib Colors](https://matplotlib.org/stable/gallery/color/named_colors.html)
-
-**Key DAFT Parameters to Explore:**
-
-- `plot_params`: Dictionary of matplotlib parameters for styling
-- `aspect`: Controls node width (default: 1.0)
-- `scale`: Controls node size (default: 1.0)
-- `fontsize`: Text size in the node
-- `alternate`: Use alternative node shape (True/False)
-
-## Grading Rubric 🎓
-
-**90% Grade:** Successfully recreate all 3 DAGs with good visual quality.
-
-**100% Grade:** Recreate all 3 DAGs with enhanced quality and visual aesthetics (example: use nice fill colors and/or enclose the text in the ellipse completely).
-
-## Submission Checklist ✅
-
-**Minimum Requirements (Required for Any Points):**
-
-- [ ] Created repository named "daftChallenge" in your GitHub account (forked from [https://github.com/flyaflya/daftChallenge](https://github.com/flyaflya/daftChallenge))
-- [ ] Cloned repository locally using Cursor (or VS Code)
-- [ ] Installed DAFT package successfully
-- [ ] Document rendered to HTML successfully
-- [ ] HTML files uploaded to your repository
-- [ ] GitHub Pages enabled and working
-- [ ] Site accessible at `https://[your-username].github.io/daftChallenge/`
-
-**90% Grade Requirements:**
-
-- [ ] Successfully recreate all 3 DAGs
-- [ ] Good visual quality with appropriate styling
-
-**100% Grade Requirements:**
-
-- [ ] All DAG recreations completed with professional quality
-- [ ] Erase everything but the story of scurvy and the three DAGs (make it a nice concise narrative about scurvy)
 
 
 
